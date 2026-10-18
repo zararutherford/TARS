@@ -16,9 +16,6 @@
       "Bash(git push *)"
     ],
     "deny": [
-      "Read(~/Library/Messages/**)",
-      "Read(~/Library/Mail/**)",
-      "Read(~/Library/Application Support/TARS/**)",
       "Read(./**/.env*)",
       "mcp__Neon"
     ]

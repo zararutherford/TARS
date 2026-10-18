@@ -19,8 +19,8 @@ Personal, local-only macOS assistant for one user. It reads Apple Mail and iMess
 - Swift: `cd swift && swift build`, `swift test`.
 
 ## Hard rules
-- These rules bind Claude Code (the coding assistant), not the TARS app. TARS reads Mail, Messages, Calendar and the web by design; that is the product.
-- While developing, do not open `~/Library/Mail`, `~/Library/Messages/chat.db`, `~/Library/Application Support/TARS`, or the keychain with your own file tools, and do not paste raw message bodies into the transcript. Tests use synthetic fixtures under `engine/tests/fixtures/`. Running the `tars` CLI against real data for dogfooding is fine when the user asks; prefer counts, ids and subjects over bodies in what you print.
+- Real data is in scope during development. The user has authorized reading `~/Library/Mail`, `~/Library/Messages/chat.db`, and `~/Library/Application Support/TARS` directly (sqlite3, the `tars` CLI, scripts) to inspect schemas, debug parsers, and dogfood. Use it whenever it makes the work better.
+- What stays out: never commit real messages, addresses, or bodies; never copy them into `engine/tests/fixtures/`, docs, ADRs, or commit messages. Tests run on synthetic fixtures so they are deterministic and safe in CI. If a real case is needed as a regression test, anonymize it first.
 - No hosted AI endpoints or SDKs anywhere in the code or lockfile. `scripts/check_no_ai_endpoints.sh` enforces this in a hook, pre-commit, and CI. Inference is local (mlx_lm in-process, or an OpenAI-compatible local server).
 - Plain SQL migrations, no ORM. `store/db.py` is the only place that opens the database.
 - Swift holds no business logic. Decisions, state, and scheduling live in the Python engine.
