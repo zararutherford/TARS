@@ -1,0 +1,27 @@
+# Claude Code
+.claude/settings.local.json
+.claude/worktrees/
+CLAUDE.local.md
+
+# Python
+engine/.venv/
+__pycache__/
+*.pyc
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Swift
+swift/.build/
+swift/.swiftpm/
+*.xcodeproj
+dist/
+
+# Local config and secrets
+.env
+.env.*
+*.pem
+*.p12
+
+# macOS
+.DS_Store
