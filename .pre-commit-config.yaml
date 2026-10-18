@@ -1,0 +1,21 @@
+repos:
+  - repo: local
+    hooks:
+      - id: no-ai-endpoints
+        name: no hosted AI endpoints or SDKs
+        entry: scripts/check_no_ai_endpoints.sh
+        language: script
+        pass_filenames: false
+        always_run: true
+      - id: ruff-format
+        name: ruff format
+        entry: bash -c 'cd engine && uv run ruff format --check .'
+        language: system
+        files: ^engine/.*\.py$
+        pass_filenames: false
+      - id: ruff-check
+        name: ruff check
+        entry: bash -c 'cd engine && uv run ruff check .'
+        language: system
+        files: ^engine/.*\.py$
+        pass_filenames: false

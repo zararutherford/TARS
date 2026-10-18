@@ -14,7 +14,7 @@ Personal, local-only macOS assistant for one user. It reads Apple Mail and iMess
 - `docs/` spec PDF, plan snapshot, PERMISSIONS.md, QUESTIONS.md, `adr/`.
 
 ## Commands
-- `make setup | build | run | check | models` are the entry points. `make check` = ruff, mypy, pytest (not `needs_models`), swift build, endpoint check.
+- `make setup | build | run | check | models` are the entry points. `make check` = ruff, mypy, pytest (not `needs_models`), swift build, swift test, endpoint check.
 - Python: `cd engine && uv run pytest`, `uv run ruff check`, `uv run mypy`. Tests that load Qwen carry the `needs_models` marker and are excluded by default.
 - Swift: `cd swift && swift build`, `swift test`.
 

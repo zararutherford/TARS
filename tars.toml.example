@@ -1,0 +1,57 @@
+# TARS configuration. Copied to ~/Library/Application Support/TARS/tars.toml by `make setup`.
+# One file holds every model choice, threshold and standing permission.
+# The data directory itself is not a key here; set TARS_DATA_DIR to relocate it.
+
+[profile]
+name = "small"                                  # auto-detected from hw.memsize (small < 32 GB, medium < 64 GB, large >= 64 GB); user can override
+
+[models]
+embedding = "BAAI/bge-small-en-v1.5"
+tier1     = "heads"                             # heads | jev   (jev = local jeff/von server at jev_url)
+tier2     = "mlx:mlx-community/Qwen3-8B-4bit"   # mlx:<hf id> | openai_compat:<url>  (Ollama / mlx_lm.server)
+drafts    = "mlx:mlx-community/Qwen3-8B-4bit"
+jev_url   = "http://127.0.0.1:8000"
+
+[llm]
+idle_unload_s = 600
+tier2_daily_budget = 300
+fallback_p = 0.8
+
+[cascade]
+band = [0.40, 0.60]
+vip_always_tier2 = true
+
+[notify]
+min_p = 0.75
+daily_cap = 12
+quiet_hours = ["23:00", "08:00"]
+
+[learning]
+reply_fast_minutes = 20
+reply_slow_days = 3
+maturity_days = 14
+example_max_age_days = 180
+decay_days = 90
+
+[active_learning]
+per_day = 3
+
+[features]                                      # off | shadow | live
+drafts = "shadow"
+commitments = "off"
+booking = "off"
+shadow_days = 14
+graduate_precision = 0.85
+
+[drafts]
+sink = "mail"                                   # mail | inbox
+
+[permissions]                                   # confirm | auto | off; promotions logged and revocable
+calendar_create = "auto"
+
+[store]
+encryption = "none"                             # sqlcipher | none; defaults to sqlcipher from M2
+key_source = "keychain"                         # keychain | file
+
+[egress]
+proxy_port = 8081

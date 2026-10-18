@@ -1,0 +1,55 @@
+[project]
+name = "tars"
+version = "0.0.1"
+description = "Personal, local-only macOS assistant. Nothing leaves the machine."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "pydantic>=2.9",
+    "rich>=13.9",
+    "structlog>=24.4",
+    "tomlkit>=0.13",
+    "typer>=0.15",
+]
+
+[project.scripts]
+tars = "tars.cli:main"
+tars-daemon = "tars.daemon.app:main"
+tars-llm = "tars.llm.server:main"
+tars-nightly = "tars.learning.nightly:main"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.13",
+    "pytest>=8.3",
+    "ruff>=0.8",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tars"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RET", "ANN", "N", "W"]
+ignore = ["ANN401"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src/tars", "tests"]
+mypy_path = "src"
+warn_unreachable = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not needs_models'"
+markers = [
+    "needs_models: loads a local model; excluded by default and from CI",
+]

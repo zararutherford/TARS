@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleExecutable</key>
+	<string>TARSApp</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.zararutherford.tars</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>TARS</string>
+	<key>CFBundleDisplayName</key>
+	<string>TARS</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.0.1</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>15.0</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>Local-only. Nothing leaves the machine.</string>
+	<key>NSCalendarsFullAccessUsageDescription</key>
+	<string>TARS reads your calendar to spot plans and commitments, and creates events you approve.</string>
+	<key>NSRemindersFullAccessUsageDescription</key>
+	<string>TARS reads your reminders and creates the ones you approve.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>TARS uses Contacts to put names to the people in your mail and messages.</string>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>TARS asks Mail to save drafts you approve. It never sends on its own.</string>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>TARS notifies you about messages that need attention.</string>
+</dict>
+</plist>
